@@ -23,6 +23,14 @@ export default function PropertyCard({
   area,
   imageUrl
 }: PropertyCardProps) {
+  // Fungsi untuk mengonversi harga ke Rupiah
+  const formatToRupiah = (value: number): string => {
+    return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(value)
+  }
+
+  // Konversi harga dari USD ke IDR (contoh kurs: 1 USD = 15,000 IDR)
+  const priceInIDR = price * 15000
+
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden">
       <div className="relative h-48">
@@ -37,11 +45,11 @@ export default function PropertyCard({
         <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
         <p className="text-gray-600">{location}</p>
         <p className="text-xl font-bold text-blue-600 mt-2">
-          ${price.toLocaleString()}
+          {formatToRupiah(priceInIDR)}
         </p>
         <div className="flex justify-between mt-4 text-gray-500">
-          <span>{bedrooms} beds</span>
-          <span>{bathrooms} baths</span>
+          <span>{bedrooms} KAMAR TIDUR</span>
+          <span>{bathrooms} KAMAR MANDI</span>
           <span>{area} sqft</span>
         </div>
         <Link
@@ -52,8 +60,6 @@ export default function PropertyCard({
         >
           Konsultasi ke WA
         </Link>
-
-
       </div>
     </div>
   )

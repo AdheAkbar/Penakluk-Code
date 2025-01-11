@@ -6,11 +6,12 @@ export default function Home() {
     <div>
       {/* Bagian Hero */}
       <div className="hero">
-        <div className="text-center">
-          <h1 className="text-5xl font-bold mb-4">Temukan Properti Impian Anda</h1>
-          <p className="text-xl">Vaganza Village Solusinya</p>
-        </div>
-      </div>
+  <div className="text-center">
+    <h1 className="text-5xl font-bold mb-4">"Tempat Tinggal Ideal untuk Masa Depan Anda"</h1>
+    <p className="text-xl">"Dikelilingi lingkungan hijau yang asri, Vaganza Village adalah pilihan sempurna untuk Anda dan keluarga. Vaganza Village adalah kawasan perumahan yang dirancang dengan penuh perhatian terhadap kenyamanan dan kualitas hidup penghuninya. Bergabunglah bersama komunitas kami untuk menikmati kehidupan terbaik"</p>
+    <p className="text-xl mt-7">"Vaganza Village Residents"</p> {/* Tambahkan kelas mt-4 di sini */}
+  </div>
+</div>
 
       {/* Properti Unggulan */}
       <div className="max-w-7xl mx-auto px-4 py-12">

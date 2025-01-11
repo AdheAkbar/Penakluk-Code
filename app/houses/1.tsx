@@ -42,7 +42,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 export default function PropertyDetail({ property }: { property: Property }) {
   if (!property) {
-    return <div>Property not found</div>;
+    return <div>Properti tidak ditemukan !</div>;
   }
 
   return (
@@ -56,8 +56,8 @@ export default function PropertyDetail({ property }: { property: Property }) {
       <p className="text-xl text-gray-700 mt-2">${property.price.toLocaleString()}</p>
       <p className="mt-4 text-gray-600">{property.location}</p>
       <div className="mt-4 flex justify-between text-gray-500">
-        <span>{property.bedrooms} beds</span>
-        <span>{property.bathrooms} baths</span>
+        <span>{property.bedrooms} kamar</span>
+        <span>{property.bathrooms} kamar mandi</span>
         <span>{property.area} sqft</span>
       </div>
     </div>

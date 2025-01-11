@@ -1,9 +1,9 @@
 export const properties = [
   {
     id: 1,
-    title: "Modern Villa",
+    title: "Rumah Type A Tulip",
     description: "Beautiful modern villa with ocean view",
-    price: 1500000,
+    price: 150000,
     location: "Miami Beach",
     bedrooms: 4,
     bathrooms: 3,
@@ -13,9 +13,9 @@ export const properties = [
   },
   {
     id: 2,
-    title: "Cozy Family House",
+    title: "Rumah Type B Mawar",
     description: "Perfect house for a growing family",
-    price: 450000,
+    price: 45000,
     location: "Suburbia",
     bedrooms: 3,
     bathrooms: 2,
@@ -25,9 +25,9 @@ export const properties = [
   },
   {
     id: 3,
-    title: "Cozy Family House",
+    title: "Rumah Type 2 Mawar",
     description: "Perfect house for a growing family",
-    price: 450000,
+    price: 45000,
     location: "Suburbia",
     bedrooms: 3,
     bathrooms: 2,
@@ -38,9 +38,9 @@ export const properties = [
 
   {
     id: 4,
-    title: "Cozy Family House",
+    title: "Rumah Type 3 Tulip",
     description: "Perfect house for a growing family",
-    price: 450000,
+    price: 50000,
     location: "Suburbia",
     bedrooms: 3,
     bathrooms: 2,
@@ -50,9 +50,9 @@ export const properties = [
   },
   {
     id: 5,
-    title: "Cozy Family House",
+    title: "Rumah Type 1 Anggrek",
     description: "Perfect house for a growing family",
-    price: 450000,
+    price: 35500,
     location: "Suburbia",
     bedrooms: 3,
     bathrooms: 2,
@@ -62,9 +62,9 @@ export const properties = [
   },
   {
     id: 6,
-    title: "Cozy Family House",
+    title: "Rumah Type 3 Anggrek",
     description: "Perfect house for a growing family",
-    price: 450000,
+    price: 45200,
     location: "Suburbia",
     bedrooms: 3,
     bathrooms: 2,
@@ -74,9 +74,9 @@ export const properties = [
   },
   {
     id: 7,
-    title: "Cozy Family House",
+    title: "Rumah Type 1 Rafflesia",
     description: "Perfect house for a growing family",
-    price: 450000,
+    price: 45080,
     location: "Suburbia",
     bedrooms: 3,
     bathrooms: 2,
@@ -87,9 +87,9 @@ export const properties = [
 
   {
     id: 8,
-    title: "Cozy Family House",
+    title: "Rumah Type 1 Lily",
     description: "Perfect house for a growing family",
-    price: 450000,
+    price: 45280,
     location: "Suburbia",
     bedrooms: 3,
     bathrooms: 2,
@@ -99,9 +99,9 @@ export const properties = [
   },
   {
     id: 9,
-    title: "Cozy Family House",
+    title: "Rumah Type 3 Mawar",
     description: "Perfect house for a growing family",
-    price: 450000,
+    price: 45400,
     location: "Suburbia",
     bedrooms: 3,
     bathrooms: 2,

@@ -46,11 +46,17 @@ export default function AboutPage() {
       </div>
 
       <div className="mt-16">
-        <h3 className="text-2xl font-bold text-gray-900">Our Team</h3>
-        <div className="mt-8 grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
-          {/* Add team members */}
-        </div>
-      </div>
+  <h3 className="text-2xl font-bold text-gray-900 text-center">Our Team</h3>
+  <div className="mt-8 grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3 mx-auto max-w-4xl">
+    {/* Add team members */}
+    <div className="mt-3 text-lg text-gray-500 text-justify mx-auto max-w-3xl">
+
+</div>
+
+
+  </div>
+</div>
+
     </div>
   )
 }

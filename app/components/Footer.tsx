@@ -6,8 +6,8 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
               <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
-              <p>Email: projectakbar88@gmai.com</p>
-              <p>Phone: (+62) 0812-7244-4410</p>
+              <p>Email: projectakbar88@gmail.com</p>
+              <p>Phone: (+62) 812-7244-4410</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-4"></h3>
