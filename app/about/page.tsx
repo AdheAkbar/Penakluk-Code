@@ -1,4 +1,3 @@
-// app/about/page.tsx
 import Image from 'next/image'
 
 export default function AboutPage() {
@@ -10,8 +9,8 @@ export default function AboutPage() {
             About Vaganza Vilage
           </h2>
           <p className="mt-3 text-lg text-gray-500">
-          Perumahan yang mengusung sistem cluster di kawasan strategis Bandar 
-          Lampung bisa menjadikan pilihan yang tepat untuk memilih hunian keluarga dengan kemudahan aksesibilitas
+            Perumahan yang mengusung sistem cluster di kawasan strategis Bandar 
+            Lampung bisa menjadikan pilihan yang tepat untuk memilih hunian keluarga dengan kemudahan aksesibilitas
           </p>
           
           <dl className="mt-10 space-y-10">
@@ -37,7 +36,7 @@ export default function AboutPage() {
         <div className="mt-10 lg:mt-0">
           <div className="relative aspect-w-16 aspect-h-9">
             <Image
-              src="/about-image.jpg"
+              src="/images/about-image.png"
               alt="About Us"
               fill
               className="object-cover rounded-lg shadow-lg"
