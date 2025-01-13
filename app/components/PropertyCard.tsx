@@ -1,16 +1,18 @@
 // components/PropertyCard.tsx
-import Link from 'next/link'
-import Image from 'next/image'
+import Link from 'next/link';
+import Image from 'next/image';
+import { Bed, Bath, Square, MapPin } from 'lucide-react';
 
 interface PropertyCardProps {
-  id: number
-  title: string
-  price: number
-  location: string
-  bedrooms: number
-  bathrooms: number
-  area: number
-  imageUrl: string
+  id: number;
+  title: string;
+  price: number;
+  location: string;
+  bedrooms: number;
+  bathrooms: number;
+  area: number;
+  imageUrl: string;
+  description: string;
 }
 
 export default function PropertyCard({
@@ -21,46 +23,80 @@ export default function PropertyCard({
   bedrooms,
   bathrooms,
   area,
-  imageUrl
+  imageUrl,
+  description
 }: PropertyCardProps) {
-  // Fungsi untuk mengonversi harga ke Rupiah
+  // Convert price to IDR
   const formatToRupiah = (value: number): string => {
-    return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(value)
-  }
-
-  // Konversi harga dari USD ke IDR (contoh kurs: 1 USD = 15,000 IDR)
-  const priceInIDR = price * 15000
+    const priceInIDR = value * 15000; // Assuming 1 USD = 15,000 IDR
+    return new Intl.NumberFormat('id-ID', { 
+      style: 'currency', 
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    }).format(priceInIDR);
+  };
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden">
-      <div className="relative h-48">
+    <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
+      {/* Image Container */}
+      <div className="relative h-64 overflow-hidden">
         <Image
           src={imageUrl}
           alt={title}
           fill
-          className="object-cover"
+          className="object-cover group-hover:scale-110 transition-transform duration-300"
         />
-      </div>
-      <div className="p-4">
-        <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
-        <p className="text-gray-600">{location}</p>
-        <p className="text-xl font-bold text-blue-600 mt-2">
-          {formatToRupiah(priceInIDR)}
-        </p>
-        <div className="flex justify-between mt-4 text-gray-500">
-          <span>{bedrooms} KAMAR TIDUR</span>
-          <span>{bathrooms} KAMAR MANDI</span>
-          <span>{area} sqft</span>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-60"></div>
+        <div className="absolute bottom-4 left-4 right-4">
+          <div className="flex justify-between items-end">
+            <h3 className="text-xl font-bold text-white">{title}</h3>
+            <p className="text-lg font-bold text-white">
+              {formatToRupiah(price)}
+            </p>
+          </div>
         </div>
-        <Link
-          href={`https://wa.me/6281272444410?text=Halo,%20saya%20tertarik%20dengan%20properti%20${title}%20lokasi%20di%20${location}.`}
-          target="_blank" // Membuka link di tab baru
-          rel="noopener noreferrer" // Keamanan tambahan untuk link eksternal
-          className="mt-4 block w-full text-center bg-green-600 text-white py-2 rounded-md hover:bg-green-700"
-        >
-          Konsultasi ke WA
-        </Link>
+      </div>
+
+      {/* Content */}
+      <div className="p-6">
+        {/* Location */}
+        <div className="flex items-center text-gray-600 mb-4">
+          <MapPin className="h-5 w-5 text-blue-600 mr-2" />
+          <span>{location}</span>
+        </div>
+
+        {/* Description */}
+        <p className="text-gray-600 mb-6 line-clamp-2">{description}</p>
+
+        {/* Features */}
+        <div className="grid grid-cols-3 gap-4 mb-6">
+          <div className="flex items-center text-gray-600">
+            <Bed className="h-5 w-5 text-blue-600 mr-2" />
+            <span>{bedrooms} Kamar</span>
+          </div>
+          <div className="flex items-center text-gray-600">
+            <Bath className="h-5 w-5 text-blue-600 mr-2" />
+            <span>{bathrooms} K.Mandi</span>
+          </div>
+          <div className="flex items-center text-gray-600">
+            <Square className="h-5 w-5 text-blue-600 mr-2" />
+            <span>{area} m²</span>
+          </div>
+        </div>
+
+        {/* Action Buttons */}
+        <div className="flex space-x-4">
+          <Link
+            href={`https://wa.me/6281272444410?text=Halo,%20saya%20tertarik%20dengan%20properti%20${title}%20dengan%20harga%20${formatToRupiah(price)}.`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 bg-green-600 text-white py-2 rounded-lg text-center font-semibold hover:bg-green-700 transition-colors duration-300"
+          >
+            Hubungi Agen
+          </Link>
+        </div>
       </div>
     </div>
-  )
+  );
 }

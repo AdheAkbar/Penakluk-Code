@@ -16,9 +16,9 @@ model Property {
   location    String
   bedrooms    Int
   bathrooms   Int
-  area        Float
+  area        Int
   imageUrl    String
-  type        String   // Tambahkan ini
+  type        String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }

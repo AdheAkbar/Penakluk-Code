@@ -1,28 +1,113 @@
-import PropertyCard from '../components/PropertyCard'
-import { properties } from '@/lib/properties'
+'use client'
+import { useState } from 'react';
+import PropertyCard from '../components/PropertyCard';
+import { properties } from '@/lib/properties';
+import { Search, Home, SlidersHorizontal } from 'lucide-react';
 
-export default function Home() {
+export default function Houses() {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [priceRange, setPriceRange] = useState('all');
+  const [propertyType, setPropertyType] = useState('all');
+
+  // Filter properties based on search and filters
+  const filteredHouses = properties.filter(property => {
+    const matchesSearch = property.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         property.description.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesPrice = priceRange === 'all' || 
+                        (priceRange === 'low' && property.price < 45000) ||
+                        (priceRange === 'mid' && property.price >= 45000 && property.price < 100000) ||
+                        (priceRange === 'high' && property.price >= 100000);
+    const matchesType = propertyType === 'all' || 
+                       property.title.toLowerCase().includes(propertyType.toLowerCase());
+
+    return matchesSearch && matchesPrice && matchesType;
+  });
+
   return (
-    <div>
-      {/* Bagian Hero dengan Background */}
-      <div className="hero">
-        <div className="text-center text-white">
-          <h1 className="text-5xl font-bold mb-4">Temukan Properti Impian Anda</h1>
-          <p className="text-xl">Vaganza Village Solusinya</p>
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <div className="relative bg-blue-600 text-white py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">Temukan Rumah Impian Anda</h1>
+            <p className="text-xl opacity-90 mb-8">Koleksi hunian eksklusif dengan desain modern dan lokasi strategis</p>
+          </div>
+
+          {/* Search Bar */}
+          <div className="max-w-3xl mx-auto">
+            <div className="bg-white rounded-lg shadow-lg p-4 flex items-center space-x-4">
+              <div className="flex-1 relative">
+                <input
+                  type="text"
+                  placeholder="Cari properti..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none text-gray-800"
+                />
+                <Search className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Bagian Properti Unggulan */}
+      {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 py-12">
-        <h2 className="text-3xl font-bold text-gray-900 mb-8">Properti Unggulan Kami</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {properties
-            .filter((property) => [8, 9, 3].includes(property.id)) // Filter hanya untuk ID 8, 9, dan 3
-            .map((property) => (
-              <PropertyCard key={property.id} {...property} />
-            ))}
+        {/* Filters */}
+        <div className="mb-8 flex flex-wrap gap-4 items-center">
+          <div className="flex items-center">
+            <SlidersHorizontal className="h-5 w-5 text-gray-500 mr-2" />
+            <span className="text-gray-700 font-medium">Filter:</span>
+          </div>
+          
+          <select
+            value={priceRange}
+            onChange={(e) => setPriceRange(e.target.value)}
+            className="px-4 py-2 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+          >
+            <option value="all">Semua Harga</option>
+            <option value="low">Kurang dari 45.000</option>
+            <option value="mid">45.000 - 100.000</option>
+            <option value="high">Lebih dari 100.000</option>
+          </select>
+
+          <select
+            value={propertyType}
+            onChange={(e) => setPropertyType(e.target.value)}
+            className="px-4 py-2 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
+          >
+            <option value="all">Semua Tipe</option>
+            <option value="tulip">Tulip</option>
+            <option value="mawar">Mawar</option>
+            <option value="anggrek">Anggrek</option>
+            <option value="rafflesia">Rafflesia</option>
+            <option value="lily">Lily</option>
+          </select>
         </div>
+
+        {/* Results Counter */}
+        <div className="mb-6 flex items-center justify-between">
+          <div className="flex items-center">
+            <Home className="h-5 w-5 text-blue-600 mr-2" />
+            <h2 className="text-xl font-semibold text-gray-900">
+              {filteredHouses.length} Properti Tersedia
+            </h2>
+          </div>
+        </div>
+
+        {/* Property Grid */}
+        {filteredHouses.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredHouses.map(house => (
+              <PropertyCard key={house.id} {...house} />
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-12">
+            <p className="text-gray-500 text-lg">Tidak ada properti yang sesuai dengan filter yang dipilih.</p>
+          </div>
+        )}
       </div>
     </div>
-  )
+  );
 }
