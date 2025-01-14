@@ -2,7 +2,7 @@ export const properties = [
   {
     id: 1,
     title: "Rumah Type A Tulip",
-    description: "Beautiful modern villa with ocean view",
+    description: "Rumah idaman Pasangan Baru",
     price: 25500,
     location: "Miami Beach",
     bedrooms: 4,
@@ -14,7 +14,7 @@ export const properties = [
   {
     id: 2,
     title: "Rumah Type B Mawar",
-    description: "Perfect house for a growing family",
+    description: "Rumah yang cocok ditinggali oleh keluarga",
     price: 35000,
     location: "Suburbia",
     bedrooms: 3,
@@ -26,7 +26,7 @@ export const properties = [
   {
     id: 3,
     title: "Rumah Type 2 Mawar",
-    description: "Perfect house for a growing family",
+    description: "Rumah yang nyaman untuk ditinggali",
     price: 45000,
     location: "Suburbia",
     bedrooms: 3,
@@ -39,7 +39,7 @@ export const properties = [
   {
     id: 4,
     title: "Rumah Type 3 Tulip",
-    description: "Perfect house for a growing family",
+    description: "Masa Depan, Satu Rumah dalam Satu Waktu.",
     price: 50000,
     location: "Suburbia",
     bedrooms: 3,
@@ -51,7 +51,7 @@ export const properties = [
   {
     id: 5,
     title: "Rumah Type 1 Anggrek",
-    description: "Perfect house for a growing family",
+    description: "Rumah Hangat untuk Masa Depan Cerah.",
     price: 35500,
     location: "Suburbia",
     bedrooms: 3,
@@ -63,7 +63,7 @@ export const properties = [
   {
     id: 6,
     title: "Rumah Type 3 Anggrek",
-    description: "Perfect house for a growing family",
+    description: "Rumah Idaman, Investasi Masa Depan.",
     price: 45200,
     location: "Suburbia",
     bedrooms: 3,
@@ -75,7 +75,7 @@ export const properties = [
   {
     id: 7,
     title: "Rumah Type 1 Rafflesia",
-    description: "Perfect house for a growing family",
+    description: "Hunian Impian, Kenyamanan Sejati.",
     price: 45080,
     location: "Suburbia",
     bedrooms: 3,
@@ -88,7 +88,7 @@ export const properties = [
   {
     id: 8,
     title: "Rumah Type 1 Lily",
-    description: "Perfect house for a growing family",
+    description: "Tempat Tinggal, Tempat Bahagia.",
     price: 45280,
     location: "Suburbia",
     bedrooms: 3,
@@ -100,7 +100,7 @@ export const properties = [
   {
     id: 9,
     title: "Rumah Type 3 Mawar",
-    description: "Perfect house for a growing family",
+    description: "Rumah yang Mengerti Anda.",
     price: 45400,
     location: "Suburbia",
     bedrooms: 3,
