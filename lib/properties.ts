@@ -3,7 +3,7 @@ export const properties = [
     id: 1,
     title: "Rumah Type A Tulip",
     description: "Beautiful modern villa with ocean view",
-    price: 150000,
+    price: 25500,
     location: "Miami Beach",
     bedrooms: 4,
     bathrooms: 3,
