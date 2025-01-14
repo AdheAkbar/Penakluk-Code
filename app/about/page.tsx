@@ -75,7 +75,8 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">Keunggulan Kami</h2>
-            <p className="text-xl text-gray-600">Mengapa memilih Vaganza Village sebagai hunian Anda?</p>
+            <p className="text-xl text-gray-600">"Pilih perumahan kami untuk mendapatkan hunian yang tidak hanya nyaman, 
+              tetapi juga dilengkapi dengan fasilitas terbaik, lokasi strategis, Perumahan kami adalah jawaban bagi Anda yang mencari hunian modern, lingkungan asri, serta akses mudah ke berbagai fasilitas penting, dan desain yang mengutamakan kualitas hidup Anda."</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
