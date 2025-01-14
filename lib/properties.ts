@@ -15,7 +15,7 @@ export const properties = [
     id: 2,
     title: "Rumah Type B Mawar",
     description: "Perfect house for a growing family",
-    price: 45000,
+    price: 35000,
     location: "Suburbia",
     bedrooms: 3,
     bathrooms: 2,
