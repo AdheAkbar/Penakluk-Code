@@ -1,27 +1,37 @@
+// app/houses/page.tsx
 'use client'
-import { useState } from 'react';
 import PropertyCard from '../components/PropertyCard';
-import { properties } from '@/lib/properties';
+import { useProperties } from '../hooks/userProperties';
 import { Search, Home, SlidersHorizontal } from 'lucide-react';
 
 export default function Houses() {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [priceRange, setPriceRange] = useState('all');
-  const [propertyType, setPropertyType] = useState('all');
+  const {
+    properties: filteredHouses,
+    isLoading,
+    error,
+    searchTerm,
+    setSearchTerm,
+    priceRange,
+    setPriceRange,
+    propertyType,
+    setPropertyType,
+  } = useProperties();
 
-  // Filter properties based on search and filters
-  const filteredHouses = properties.filter(property => {
-    const matchesSearch = property.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         property.description.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesPrice = priceRange === 'all' || 
-                        (priceRange === 'low' && property.price < 45000) ||
-                        (priceRange === 'mid' && property.price >= 45000 && property.price < 100000) ||
-                        (priceRange === 'high' && property.price >= 100000);
-    const matchesType = propertyType === 'all' || 
-                       property.title.toLowerCase().includes(propertyType.toLowerCase());
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+      </div>
+    );
+  }
 
-    return matchesSearch && matchesPrice && matchesType;
-  });
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-red-600">{error}</div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">

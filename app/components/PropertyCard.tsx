@@ -26,9 +26,12 @@ export default function PropertyCard({
   imageUrl,
   description
 }: PropertyCardProps) {
+  // Memastikan imageUrl dimulai dengan "/"
+  const imageSrc = imageUrl.startsWith('/') ? imageUrl : `/${imageUrl}`;
+
   // Convert price to IDR
   const formatToRupiah = (value: number): string => {
-    const priceInIDR = value * 15000; // Assuming 1 USD = 15,000 IDR
+    const priceInIDR = value * 1; 
     return new Intl.NumberFormat('id-ID', { 
       style: 'currency', 
       currency: 'IDR',
@@ -42,7 +45,7 @@ export default function PropertyCard({
       {/* Image Container */}
       <div className="relative h-64 overflow-hidden">
         <Image
-          src={imageUrl}
+          src={imageSrc}
           alt={title}
           fill
           className="object-cover group-hover:scale-110 transition-transform duration-300"
@@ -85,17 +88,15 @@ export default function PropertyCard({
           </div>
         </div>
 
-        {/* Action Buttons */}
-        <div className="flex space-x-4">
-          <Link
-            href={`https://wa.me/6281272444410?text=Halo,%20saya%20tertarik%20dengan%20properti%20${title}%20dengan%20harga%20${formatToRupiah(price)}.`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-1 bg-green-600 text-white py-2 rounded-lg text-center font-semibold hover:bg-green-700 transition-colors duration-300"
-          >
-            Hubungi Agen
-          </Link>
-        </div>
+        {/* Action Button */}
+        <Link
+          href={`https://wa.me/6281272444410?text=Halo,%20saya%20tertarik%20dengan%20properti%20${title}%20dengan%20harga%20${formatToRupiah(price)}.`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex-1 bg-green-600 text-white py-2 px-4 rounded-lg text-center font-semibold hover:bg-green-700 transition-colors duration-300 block"
+        >
+          Hubungi Agen
+        </Link>
       </div>
     </div>
   );

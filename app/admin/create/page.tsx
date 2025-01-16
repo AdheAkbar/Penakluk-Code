@@ -1,3 +1,4 @@
+// app/admin/create/page.tsx
 'use client'
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -6,6 +7,7 @@ import Link from 'next/link';
 export default function CreateProperty() {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -21,16 +23,33 @@ export default function CreateProperty() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
     
     try {
-      // Here you would integrate with your backend API
-      console.log('Creating property:', formData);
-      // Simulate API delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const response = await fetch('/api/properties', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          price: parseFloat(formData.price),
+          bedrooms: parseInt(formData.bedrooms),
+          bathrooms: parseInt(formData.bathrooms),
+          area: parseInt(formData.area)
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to create property');
+      }
+
       router.push('/admin');
+      router.refresh();
     } catch (error) {
       console.error('Error creating property:', error);
-      alert('Failed to create property. Please try again.');
+      setError(error instanceof Error ? error.message : 'Failed to create property');
     } finally {
       setIsSubmitting(false);
     }
@@ -56,6 +75,12 @@ export default function CreateProperty() {
             Kembali ke Dashboard
           </Link>
         </div>
+
+        {error && (
+          <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-md">
+            <p className="text-red-600">{error}</p>
+          </div>
+        )}
 
         <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-md p-6 space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -85,7 +110,7 @@ export default function CreateProperty() {
                 onChange={handleChange}
                 required
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
-                placeholder="Contoh: Pontianak, Kalimantan Barat"
+                placeholder="Contoh: Bandar Lampung"
               />
             </div>
 
@@ -100,7 +125,7 @@ export default function CreateProperty() {
                 onChange={handleChange}
                 required
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
-                placeholder="Masukkan harga dalam USD"
+                placeholder="Masukkan harga"
               />
             </div>
 
@@ -121,7 +146,7 @@ export default function CreateProperty() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Kamar Tidur
+                Jumlah Kamar Tidur
               </label>
               <input
                 type="number"
@@ -136,12 +161,27 @@ export default function CreateProperty() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Kamar Mandi
+                Jumlah Kamar Mandi
               </label>
               <input
                 type="number"
                 name="bathrooms"
                 value={formData.bathrooms}
+                onChange={handleChange}
+                required
+                min="1"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Luas Area (m²)
+              </label>
+              <input
+                type="number"
+                name="area"
+                value={formData.area}
                 onChange={handleChange}
                 required
                 min="1"

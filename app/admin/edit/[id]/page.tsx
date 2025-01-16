@@ -1,84 +1,60 @@
+// app/admin/edit/[id]/page.tsx
 'use client'
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-import { properties } from '@/lib/properties';
+import { useEffect, useState } from 'react';
+import { useParams } from 'next/navigation';
+import PropertyForm from '@/app/components/PropertyForm';
 
-export default function EditProperty({ params }: { params: { id: string } }) {
-  const router = useRouter();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState({
-    title: '',
-    description: '',
-    price: '',
-    location: '',
-    bedrooms: '',
-    bathrooms: '',
-    area: '',
-    type: 'house',
-    imageUrl: ''
-  });
+interface Property {
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  location: string;
+  bedrooms: number;
+  bathrooms: number;
+  area: number;
+  imageUrl: string;
+  type: string;
+}
+
+export default function EditPropertyPage() {
+  const params = useParams();
+  const [property, setProperty] = useState<Property | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Find the property in our data
-    const property = properties.find(p => p.id === parseInt(params.id));
-    if (property) {
-      setFormData({
-        title: property.title,
-        description: property.description,
-        price: property.price.toString(),
-        location: property.location,
-        bedrooms: property.bedrooms.toString(),
-        bathrooms: property.bathrooms.toString(),
-        area: property.area.toString(),
-        type: property.type,
-        imageUrl: property.imageUrl
-      });
+    const fetchProperty = async () => {
+      try {
+        const response = await fetch(`/api/properties/${params.id}`);
+        if (!response.ok) throw new Error('Failed to fetch property');
+        const data = await response.json();
+        setProperty(data);
+      } catch (error) {
+        console.error('Error fetching property:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    if (params.id) {
+      fetchProperty();
     }
   }, [params.id]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    try {
-      // Here you would integrate with your backend API
-      console.log('Updating property:', formData);
-      // Simulate API delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // After successful submission, navigate back to another page
-      router.push('/admin/properties');
-    } catch (error) {
-      console.error('Failed to update property:', error);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  if (isLoading) {
+    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+  }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
+  if (!property) {
+    return <div className="min-h-screen flex items-center justify-center">Property not found</div>;
+  }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Title:
-        <input
-          type="text"
-          name="title"
-          value={formData.title}
-          onChange={handleChange}
-        />
-      </label>
-      {/* Repeat for other fields */}
-      <button type="submit" disabled={isSubmitting}>
-        {isSubmitting ? 'Submitting...' : 'Submit'}
-      </button>
-    </form>
+    <div className="min-h-screen bg-gray-50 py-12 mt-16">
+      <div className="max-w-3xl mx-auto px-4">
+        <h1 className="text-3xl font-bold text-gray-900 mb-8">Edit Property</h1>
+        <PropertyForm property={property} isEdit={true} />
+      </div>
+    </div>
   );
 }
