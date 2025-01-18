@@ -15,7 +15,7 @@ export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
-}) {
+}) {  
   return (
     <html lang="en">
       {/* Next.js automatically injects <head> tags from the metadata object */}

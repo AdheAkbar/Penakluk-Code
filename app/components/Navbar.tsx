@@ -97,7 +97,7 @@ export default function Navbar() {
                 className="flex items-center text-gray-700 hover:text-blue-600 transition-colors"
               >
                 <LogIn className="h-5 w-5 mr-1" />
-                Admin Login
+                 Login
               </Link>
             )}
           </div>

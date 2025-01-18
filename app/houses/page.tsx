@@ -76,9 +76,9 @@ export default function Houses() {
             className="px-4 py-2 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none"
           >
             <option value="all">Semua Harga</option>
-            <option value="low">Kurang dari 45.000</option>
-            <option value="mid">45.000 - 100.000</option>
-            <option value="high">Lebih dari 100.000</option>
+            <option value="low">Kurang dari 450.000.000</option>
+            <option value="mid">450.000.000 - 1.000.000.000</option>
+            <option value="high">Lebih dari 1.000.000.000</option>
           </select>
 
           <select

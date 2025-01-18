@@ -20,80 +20,83 @@ export default function AboutPage() {
         <div className="relative h-full flex items-center justify-center text-center">
           <div className="max-w-4xl px-4">
             <h1 className="text-5xl font-bold text-white mb-4">Tentang Vaganza Village</h1>
-            <p className="text-xl text-white opacity-90">Membangun Masa Depan, Menciptakan Komunitas</p>
+            <p className="text-xl text-white opacity-90">Membangun Masa Depan,Ciptakan Suasana yang Aman dan Nyaman </p>
           </div>
         </div>
       </div>
-
-      {/* Vision & Mission Section */}
-      <div className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="relative">
-              <div className="absolute -top-4 -left-4 w-72 h-72 bg-blue-100 rounded-lg"></div>
-              <div className="relative aspect-square">
-                <Image
-                  src="/images/about-image.png"
-                  alt="Our Vision"
-                  fill
-                  className="object-cover rounded-lg shadow-xl"
-                />
-              </div>
-            </div>
-            <div>
-              <h2 className="text-4xl font-bold mb-6">Visi & Misi Kami</h2>
-              <p className="text-lg text-gray-600 mb-8">
-                Perumahan yang mengusung sistem cluster di kawasan strategis Bandar Lampung 
-                menjadi pilihan tepat untuk hunian keluarga dengan kemudahan aksesibilitas. 
-                Kami berkomitmen menciptakan lingkungan yang nyaman, aman, dan berkelanjutan.
-              </p>
-              <div className="grid grid-cols-2 gap-6">
-                {[
-                  { icon: Heart, title: 'Kualitas', desc: 'Standar tertinggi dalam konstruksi' },
-                  { icon: Shield, title: 'Keamanan', desc: '24/7 sistem keamanan terpadu' },
-                  { icon: Users, title: 'Komunitas', desc: 'Lingkungan ramah keluarga' },
-                  { icon: MapPin, title: 'Lokasi', desc: 'Akses strategis ke pusat kota' }
-                ].map((item, index) => (
-                  <div key={index} className="flex gap-4">
-                    <div className="flex-shrink-0">
-                      <item.icon className="w-8 h-8 text-blue-600" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold mb-1">{item.title}</h3>
-                      <p className="text-sm text-gray-600">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+{/* Vision & Mission Section */}
+<div className="py-20 bg-white">
+  <div className="max-w-7xl mx-auto px-4">
+    <div className="grid md:grid-cols-2 gap-16 items-center">
+      <div className="relative h-[500px] w-full">
+        {/* Background decorative box */}
+        <div className="absolute top-0 left-0 w-full h-full bg-blue-100 rounded-lg transform -translate-x-4 -translate-y-4"></div>
+        {/* Image container */}
+        <div className="relative h-full w-full">
+          <Image
+            src="/images/BN.JPG"
+            alt="Our Vision"
+            fill
+            className="object-cover rounded-lg shadow-xl"
+            style={{ objectPosition: 'center' }}
+          />
         </div>
       </div>
+      <div>
+        <h2 className="text-4xl font-bold mb-6">Visi & Misi Kami</h2>
+        <p className="text-lg text-gray-600 mb-8">
+          Perumahan yang mengusung sistem cluster di kawasan strategis Bandar Lampung 
+          menjadi pilihan tepat untuk hunian keluarga dengan kemudahan aksesibilitas. 
+          Kami berkomitmen menciptakan lingkungan yang nyaman, aman, dan berkelanjutan.
+        </p>
+        <div className="grid grid-cols-2 gap-6">
+          {[
+            { icon: Heart, title: 'Kualitas', desc: 'Standar tertinggi dalam konstruksi' },
+            { icon: Shield, title: 'Keamanan', desc: '24/7 sistem keamanan terpadu' },
+            { icon: Users, title: 'Komunitas', desc: 'Lingkungan ramah keluarga' },
+            { icon: MapPin, title: 'Lokasi', desc: 'Akses strategis ke pusat kota' }
+          ].map((item, index) => (
+            <div key={index} className="flex gap-4">
+              <div className="flex-shrink-0">
+                <item.icon className="w-8 h-8 text-blue-600" />
+              </div>
+              <div>
+                <h3 className="font-semibold mb-1">{item.title}</h3>
+                <p className="text-sm text-gray-600">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
       {/* Features Section */}
       <div className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">Keunggulan Kami</h2>
-            <p className="text-xl text-gray-600">"Pilih perumahan kami untuk mendapatkan hunian yang tidak hanya nyaman, 
-              tetapi juga dilengkapi dengan fasilitas terbaik, lokasi strategis, Perumahan kami adalah jawaban bagi Anda yang mencari hunian modern, lingkungan asri, serta akses mudah ke berbagai fasilitas penting, dan desain yang mengutamakan kualitas hidup Anda."</p>
+            <p className="text-xl text-gray-600">"Kami menawarkan properti di lokasi strategis dengan desain modern yang nyaman dan estetis. Dilengkapi fasilitas premium, seperti ruang hijau, area olahraga, dan keamanan 24/7, memastikan kenyamanan dan kemewahan Anda.
+
+Sebagai investasi menguntungkan, properti kami dirancang dengan material berkualitas dan didukung oleh layanan profesional, menciptakan lingkungan ramah keluarga untuk masa depan yang bahagia dan aman.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
                 icon: Home,
                 title: 'Desain Modern',
-                description: 'Arsitektur kontemporer yang memadukan estetika dan fungsionalitas'
+                description: 'Etetika dan fungsionalitas di setiap sudut. Properti kami dirancang dengan sentuhan modern yang memadukan keindahan arsitektur masa kini dengan kenyamanan maksimal untuk mendukung gaya hidup Anda yang dinamis'
               },
               {
                 icon: Star,
                 title: 'Fasilitas Premium',
-                description: 'Dilengkapi berbagai fasilitas modern untuk kenyamanan penghuni'
+                description: 'Kami menghadirkan fasilitas terbaik untuk memenuhi setiap kebutuhan Anda. Mulai dari ruang hijau yang asri hingga teknologi pintar yang canggih, semua dirancang untuk memberikan pengalaman hidup yang eksklusif dan tak tertandingi'
               },
               {
                 icon: Award,
                 title: 'Investasi Terbaik',
-                description: 'Nilai properti yang terus meningkat dengan lokasi strategis'
+                description: 'Langkah cerdas Anda menuju masa depan yang gemilang. Dengan lokasi strategis, nilai properti yang terus meningkat, dan prospek pertumbuhan yang menjanjikan, ini adalah investasi yang tidak hanya memberikan keuntungan, tetapi juga keamanan untuk generasi mendatang'
               },
             ].map((feature, index) => (
               <div key={index} className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
